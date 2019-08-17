@@ -8,7 +8,6 @@ console.log("randomAlphabet: " + randomAlphabet);
 var wins = 0;
 var losses = 0;
 var guesses = 9;
-var guessesRemain = 0;
 
 
 document.onkeyup = function play() {
@@ -16,15 +15,22 @@ document.onkeyup = function play() {
     console.log("guess: " + guess);
     if (randomAlphabet == guess) {
         wins = wins + 1;
-        console.log("You Won!")
+        newGame();
+        console.log("You Won! Play Again! " + " You have " + guesses + " remaining.");
     } else {
         guesses = guesses - 1;
-        guessesRemain = guesses;
-        console.log("guessesRemain: " + guessesRemain);
-        if (guessesRemain == 0) {
-            console.log("Game Over");
+        console.log("guessesRemain: " + guesses);
+        if (guesses == 0) {
+            newGame();
+            console.log("You Lost, Try Again! " + " You have " + guesses + " remaining.");
         }
     }
+}
+
+function newGame() {
+    randomAlphabet = alphabet[Math.floor(Math.random() * alphabet.length)];
+    console.log("randomAlphabet: " + randomAlphabet);
+    guesses = 9;
 }
 
 
