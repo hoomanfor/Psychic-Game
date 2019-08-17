@@ -9,21 +9,25 @@ var wins = 0;
 var losses = 0;
 var guesses = 9;
 
-
 document.onkeyup = function play() {
     var guess = event.key.toLowerCase();
+    console.log("event: ", event);
     console.log("guess: " + guess);
-    if (randomAlphabet == guess) {
-        wins = wins + 1;
-        newGame();
-        console.log("You Won! Play Again! " + " You have " + guesses + " remaining.");
-    } else {
-        guesses = guesses - 1;
-        console.log("guessesRemain: " + guesses);
-        if (guesses == 0) {
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
+        if (randomAlphabet == guess) {
+            wins = wins + 1;
             newGame();
-            console.log("You Lost, Try Again! " + " You have " + guesses + " remaining.");
+            console.log("You Won! Play Again! " + " You have " + guesses + " remaining.");
+        } else {
+            guesses = guesses - 1;
+            console.log("guessesRemain: " + guesses);
+            if (guesses == 0) {
+                newGame();
+                console.log("You Lost, Try Again! " + " You have " + guesses + " remaining.");
+            }
         }
+    } else {
+        console.log("You did not guess a letter from a-z.")
     }
 }
 
