@@ -8,6 +8,9 @@ console.log("randomAlphabet: " + randomAlphabet);
 var wins = 0;
 var losses = 0;
 var guesses = 9;
+var alreadyGuessed = [];
+
+// alreadyGuessed.push(guess)
 
 document.onkeyup = function play() {
     var guess = event.key.toLowerCase();
@@ -19,6 +22,8 @@ document.onkeyup = function play() {
             newGame();
             console.log("You Won! Play Again! " + " You have " + guesses + " remaining.");
         } else {
+            alreadyGuessed.push(guess)
+            console.log("alreadyGuessed: " + alreadyGuessed);
             guesses = guesses - 1;
             console.log("guessesRemain: " + guesses);
             if (guesses == 0) {
@@ -35,6 +40,7 @@ function newGame() {
     randomAlphabet = alphabet[Math.floor(Math.random() * alphabet.length)];
     console.log("randomAlphabet: " + randomAlphabet);
     guesses = 9;
+    alreadyGuessed = [];
 }
 
 
