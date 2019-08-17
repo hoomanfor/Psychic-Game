@@ -25,8 +25,8 @@ document.onkeyup = function play() {
             guesses = guesses - 1;
             domGuessesLeft.textContent = guesses;
             if (guesses == 0) {
+                losses = losses + 1;
                 domLosses.textContent = losses;
-                losses = losses + 1; 
                 newGame();
             }
         }
