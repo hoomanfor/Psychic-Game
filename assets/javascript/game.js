@@ -13,13 +13,11 @@ var domLosses = document.querySelector("#dom-losses");
 var domGuessesLeft = document.querySelector("#guesses-left");
 var domAlreadyGuessed = document.querySelector("#already-guessed");
 
-// alreadyGuessed.indexOf(guess) > -1
-
 document.onkeyup = function play() {
     var guess = event.key.toLowerCase();
     console.log("event: ", event);
     console.log("guess: " + guess);
-    if (event.keyCode >= 65 && event.keyCode <= 90) {
+    if (event.keyCode >= 65 && event.keyCode <= 90 && alreadyGuessed.indexOf(guess) == -1) {
         if (randomAlphabet == guess) {
             wins = wins + 1;
             domWins.textContent = wins; 
